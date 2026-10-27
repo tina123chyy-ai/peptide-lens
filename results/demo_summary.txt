@@ -1,0 +1,9 @@
+Peptide Lens 1.0
+Samples: 5
+Substitutions: 6
+Candidate occurrences: 134
+Unique mutant peptides: 84
+Query hits: 38
+Requested lengths: 8,9,10,11
+Coordinates: 1-based inclusive
+No HLA binding or immunogenicity prediction is performed.

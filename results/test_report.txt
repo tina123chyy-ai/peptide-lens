@@ -1,0 +1,15 @@
+test_boundary_and_short_sequences (__main__.PeptideTests.test_boundary_and_short_sequences) ... ok
+test_bundled_ground_truth (__main__.PeptideTests.test_bundled_ground_truth) ... ok
+test_duplicate_retains_sources_and_exact_query (__main__.PeptideTests.test_duplicate_retains_sources_and_exact_query) ... ok
+test_lowercase_multiline_and_crlf (__main__.PeptideTests.test_lowercase_multiline_and_crlf) ... ok
+test_multi_mutation_once_per_window (__main__.PeptideTests.test_multi_mutation_once_per_window) ... ok
+test_no_mutation (__main__.PeptideTests.test_no_mutation) ... ok
+test_randomized_independent_oracle (__main__.PeptideTests.test_randomized_independent_oracle) ... ok
+test_reject_invalid_fasta (__main__.PeptideTests.test_reject_invalid_fasta) ... ok
+test_reject_invalid_lengths_and_options (__main__.PeptideTests.test_reject_invalid_lengths_and_options) ... ok
+test_sample_filter_and_csv_quotes (__main__.PeptideTests.test_sample_filter_and_csv_quotes) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.343s
+
+OK

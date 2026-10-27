@@ -1,0 +1,74 @@
+结果阅读说明 / RESULTS READING GUIDE
+
+建议顺序：总览 → 变化位置 → 全部片段 → 去重片段 → 查询结果。
+Suggested order: summary → mutations → candidates → unique peptides → queries.
+
+一、每个文件回答什么问题？ / What question does each file answer?
+
+【demo_summary.txt：整体得到什么结果？】
+这是总览：处理了多少样本、找出多少变化、截取多少片段、去重后多少种。
+Overview: sample, substitution, candidate-occurrence, unique-peptide and query counts.
+
+【demo_mutations.csv：具体哪里变了？】
+每行是一处变化，列出样本编号、第几位、原来的字母和变化后的字母。
+例如 demo_single，15，R，A：这个样本的第15位由 R 变为 A。
+One row per substitution. Example: demo_single, 15, R, A means residue 15 changed from R to A.
+
+【demo_candidates.csv：哪些片段包含变化？】
+列出全部134条片段记录，包含样本、起止位置、长度，以及正常片段和变化后的片段。
+同一条片段若包含多处变化，只出现一次，但会列出所有变化位置。
+Lists all 134 mutation-containing windows with source, coordinates, length and paired sequences. A window with multiple changes is recorded once with all change positions.
+
+【demo_unique.csv：去掉重复后，有哪些不同片段？】
+按“变化后的片段内容”合并，默认示例得到84种。还列出每种片段出现多少次、涉及几个样本。
+这里的“去重”不删除 candidates 表中的来源明细。出现次数与样本数不是临床频率。
+Groups identical mutant peptide strings into 84 distinct peptides. Occurrence and sample counts describe this dataset, not clinical prevalence. Full provenance remains in candidates.
+
+【demo_queries.csv：只想看指定样本或片段，结果是什么？】
+默认脚本查询 demo_single，所以有38条记录；它们是全部134条记录中的一部分，不是新增的38条。
+如指定其他样本或精确片段，则显示相应匹配；不设置查询条件时只有表头，没有匹配时也只有表头。
+The default query selects demo_single and returns 38 rows already present in candidates. Other filters return their matching subset. No filters or no matches produce a header-only query table.
+
+【test_report.txt：软件有没有通过预设检查？】
+打包前自动测试的记录；结尾 OK 表示这些检查通过。它不是每次启动自动重跑的记录，也不证明候选片段有生物学效果。
+Recorded automated-test log from package preparation. OK means those software checks passed, not biological validation. The demo does not rerun these tests.
+
+【ENVIRONMENT.txt：打包前在哪个环境做的测试？】
+记录测试操作系统、编译器和命令。不是自动检测你当前 Mac 的配置，也不是分析结果。
+Records the original validation environment and commands, not the current user's Mac configuration.
+
+二、默认示例中的数字怎么理解？ / Understanding the default numbers
+
+5个样本：比较了5组“正常版＋变化版”。/ Five paired sequence records.
+6处变化：五组序列一共6个位置的字母发生替换。/ Six substitutions across those pairs.
+134条片段：围绕变化位置，用8、9、10、11四种长度提取窗口。/ 134 windows across four extraction lengths.
+84种片段：将内容完全相同的突变肽合并后，得到84种。/ 84 distinct mutant peptide strings after grouping.
+38条查询记录：只挑出 demo_single 的片段。/ 38 candidate rows for demo_single.
+
+为什么6处变化会有134条片段？
+同一个变化位置可以落在多个窗口里。例如第15位变化，既可以截取第8—15位，也可以截取第9—16位。再改变窗口长度，就会得到多条记录。
+Why more windows than mutations? A single change can fall within many windows with different starts and lengths.
+
+demo_control 是无变化对照：它参与比较，但不在变化表或候选片段表出现，这是正常结果。
+The unchanged control is compared but produces no mutation or candidate rows.
+
+三、表格列名是什么意思？ / Column dictionary
+
+sample_id：样本编号。/ Sequence-pair ID.
+position_1based：变化发生在整条序列的第几位，从1开始。/ Substitution position, counting from 1.
+normal_aa / mutant_aa：原来的氨基酸 / 替换后的氨基酸。/ Original / replacement residue.
+start_1based / end_1based：片段在整条序列中的起点 / 终点，首尾都包含。/ Inclusive window coordinates.
+length：片段有多少个氨基酸。/ Peptide length in residues.
+normal_peptide / mutant_peptide：正常片段 / 对应变化后的片段。/ Paired peptide strings.
+mutation_positions_1based：片段包含哪些变化位置；多个位置用分号分隔，仍按整条序列计数。/ Full-sequence substitution coordinates separated by semicolons.
+occurrence_count：这种突变肽在全部片段记录中出现多少次。/ Number of candidate occurrences with that mutant peptide.
+sample_count：这种突变肽涉及多少个不同样本。/ Number of distinct source samples.
+
+四、这些结果能说明什么？ / What can be concluded?
+
+能说明：在本包模拟示例中，软件能定位预设变化，并完成片段提取、去重和查询。这些操作可作为后续序列研究的数据整理步骤。
+不能说明：片段一定能被免疫系统识别、一定适合做疫苗，或能提高 CAR-T 治疗效果。真实研究仍需后续预测与验证。
+The demo verifies software behavior and illustrates traceable preprocessing. It does not establish immune recognition, vaccine suitability or CAR-T treatment benefit.
+
+本说明中的5、6、134、84、38仅对应随包默认示例；改数据或提取长度后，请以新生成的 summary 和表格为准。用其他输出前缀时，文件名会变化，列的含义不变。
+The quoted counts apply only to the bundled default example. After changing data or lengths, use the new outputs; alternative prefixes change filenames but not column meanings.

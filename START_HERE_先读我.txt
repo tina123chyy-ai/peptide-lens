@@ -1,0 +1,45 @@
+Peptide Lens / 突变肽序列分析工具
+先读我 · START HERE
+
+一、这个程序是做什么的？ / What does it do?
+你可以把它理解成一个“蛋白质序列找不同”的小工具。
+蛋白质序列在电脑中表示为一串字母，每个字母代表一种氨基酸。给程序一份正常序列和一份变化后的序列，它会自动找出哪里变了，并截取包含变化位置的小片段。
+It compares paired normal and mutant protein sequences, locates amino-acid substitutions and extracts short peptide windows containing those changes.
+
+二、输入什么，输出什么？ / Input and output
+输入：data 文件夹内的正常序列与模拟突变序列。
+输出：results 文件夹内的变化位置表、全部片段表、去重片段表、查询结果及数量总览。
+Input: paired FASTA files in data. Output: substitution, candidate, unique-peptide and query tables, plus a summary in results.
+
+本包示例：比较5组序列，找出6处变化，提取134条片段记录；按片段内容去重后为84种。默认查询单点样本，得到38条记录。
+Bundled example: 5 pairs, 6 substitutions, 134 candidate occurrences, 84 unique mutant peptides and 38 rows for the default sample query.
+这些数字只对应本包默认数据和参数，换数据或参数后会改变。
+These counts apply only to the bundled default run.
+
+三、这些结果有什么用？ / Why is it useful?
+1. 自动整理：把手工逐位检查变成程序处理，定位变化并保留来源。
+2. 便于后续研究：将含变化的蛋白片段整理成候选清单，供后续分析使用。
+3. 展示编程能力：演示如何用 C++ 读取文件、比较序列，以及用数据结构完成去重和查询。
+It automates sequence bookkeeping, prepares traceable peptide lists for downstream analysis, and demonstrates C++ programming and data-structure applications.
+
+当前是教学演示和序列预处理工具。全部样例为模拟数据；“84种片段”不等于发现84种有效新抗原或疫苗靶点。程序不判断免疫反应、疫苗疗效或 CAR-T 疗效。
+This is an educational preprocessing tool. All examples are synthetic. The 84 distinct peptides are not 84 validated neoantigens or vaccine targets; no immune-response or treatment-efficacy prediction is performed.
+
+四、先怎么看结果？ / Where should I start?
+1. 打开 results/00_结果阅读说明.txt：先看“每个文件回答什么问题”。
+2. 打开 results/demo_summary.txt：看总览。
+3. 用 Excel 或 Numbers 打开 demo_mutations.csv：看哪里变了。
+4. 再看 demo_candidates.csv 和 demo_unique.csv：看片段及去重结果。
+完整中英文方法和操作说明见 README.md。
+Start with the results reading guide, then the summary and CSV tables. README.md contains the full bilingual documentation.
+
+五、怎样在 Mac 上运行？ / Running on Mac
+1. 解压整个文件夹。/ Unzip the entire folder.
+2. 打开“终端”。若没有 C++ 开发工具，输入 xcode-select --install 并完成安装。/ Install command-line developer tools if needed.
+3. 输入 cd 后加一个空格，将 peptide-lens 文件夹拖进终端，按回车。/ Change to the extracted project folder.
+4. 输入 bash run_demo.command 并回车。/ Run the demo script.
+5. 编译完成后自动生成结果，并打开 results 文件夹。/ Results are generated and the folder opens.
+
+程序没有单独的图形窗口。第一次安装开发工具需要网络，之后本程序和示例可离线运行。再次执行默认示例会覆盖 demo_ 开头的结果文件；结果阅读说明会保留。
+There is no separate graphical application window. After installing developer tools, the demo runs offline. Rerunning replaces demo_ outputs but keeps the reading guide.
+

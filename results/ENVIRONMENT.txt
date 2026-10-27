@@ -1,0 +1,7 @@
+Actual validation environment / 实际验证环境
+OS: Linux
+Compiler: c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+Flags: -std=c++17 -O2 -Wall -Wextra -Wpedantic
+Mac hardware: not available / 未实机验证
+Demo command: bash run_demo.command
+Test command: python3 tests/test_cli.py

@@ -1,0 +1,7 @@
+sample_id,position_1based,normal_aa,mutant_aa
+demo_single,15,R,A
+demo_boundary,1,A,Y
+demo_boundary,40,Y,A
+demo_multi,15,R,A
+demo_multi,18,V,C
+demo_duplicate,15,R,A

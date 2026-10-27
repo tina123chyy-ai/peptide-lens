@@ -1,0 +1,10 @@
+>demo_single synthetic substitutions
+ACDEFGHIKLMNPQASTVWYACDEFGHIKLMNPQRSTVWY
+>demo_boundary synthetic substitutions
+YCDEFGHIKLMNPQRSTVWYACDEFGHIKLMNPQRSTVWA
+>demo_multi synthetic substitutions
+ACDEFGHIKLMNPQASTCWYACDEFGHIKLMNPQRSTVWY
+>demo_control synthetic substitutions
+ACDEFGHIKLMNPQRSTVWYACDEFGHIKLMNPQRSTVWY
+>demo_duplicate synthetic substitutions
+ACDEFGHIKLMNPQASTVWYACDEFGHIKLMNPQRSTVWY
